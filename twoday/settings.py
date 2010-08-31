@@ -1,5 +1,7 @@
 # Django settings for twoday project.
 import os.path
+import os
+here = lambda x: os.path.join(os.path.abspath(os.path.dirname(__file__)), x)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -20,6 +22,9 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -46,17 +51,17 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = 'C:/django_projects/workspace/platform/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = 'http://127.0.0.1:8000/site_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = 'http://127.0.0.1:8000/media/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '!+##e$unbhda9n#5^5kc-%vn0*5ayrw1-r^-7%3o%3&_8z5y0%'
@@ -76,13 +81,30 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # default template context processors
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+
+    # django 1.2 only
+    'django.contrib.messages.context_processors.messages',
+
+    # required by django-admin-tools
+    'django.core.context_processors.request',
+
+)
+
 ROOT_URLCONF = 'twoday.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates'),
+    here('grappelli/templates/'),
 )
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -91,3 +113,4 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
+

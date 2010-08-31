@@ -14,4 +14,12 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+    
+    (r'^grappelli/', include('grappelli.urls')),
+    
+    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'C:/django_projects/workspace/platform/media/'}),
+    
+    (r'^media/admin/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'C:/django_projects/workspace/platform/media/admin/media/'}),
+
+
 )
