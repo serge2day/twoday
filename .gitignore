@@ -7,3 +7,4 @@
 *.xml.gz
 *.log
 media/admin_*
+media/admin/
