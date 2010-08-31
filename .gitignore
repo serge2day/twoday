@@ -3,6 +3,7 @@
 # *.[oa]
 # *~
 *.py[co]
+*.pyc
 *.xml.gz
 *.log
 media/admin_*
